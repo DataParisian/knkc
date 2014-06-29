@@ -1,0 +1,33 @@
+/* KNKC chapter 9 exercise 19
+ * Sundeep Kolli 21-feb-2014
+ * Program: ex19.c
+ * Purpose: Trace the execution of the "mystery" function below by hand. 
+ * Then write a program that calls the function passing it a number entered 
+ * by the user. What does the function do?
+*/
+
+
+#include <stdio.h>
+
+void pb(int n);
+
+int main (void){
+	int input;		
+
+	printf ("Enter an integer: ");
+	scanf ("%d", &input);
+	
+	pb(input);
+	
+	printf ("\n");
+	
+	return 0;
+}
+
+void pb(int n){
+	if (n != 0){
+		pb(n / 2);
+		putchar('0' + n % 2);
+	}
+}
+

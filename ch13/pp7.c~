@@ -1,0 +1,65 @@
+/* KNKC chapter 13 programming project 7
+ * Sundeep Kolli 26-apr-2014
+ * Program: pp7.c
+ * Purpose: Modify pp11.c from chapter 5 so that it uses arrays containing 
+ * pointers to strings instead of switch statements.
+*/
+
+#include <stdio.h>
+
+int main (void)
+{
+	int userInput;
+
+	printf ("Enter a two-digit number: ");
+	scanf ("%d", &userInput);
+	
+	printf ("You have entered ");	
+		
+	if (userInput < 10 || userInput > 99){
+		printf ("an illegal input");
+	}else if (userInput >= 10 && userInput < 20){
+		printf ("the number ");
+		switch (userInput){
+			case 10: printf ("ten"); break;
+			case 11: printf ("eleven"); break;
+			case 12: printf ("twelve"); break;
+			case 13: printf ("thirteen"); break;
+			case 14: printf ("fourteen"); break;
+			case 15: printf ("fifteen"); break;
+			case 16: printf ("sixteen"); break;
+			case 17: printf ("seventeen"); break;
+			case 18: printf ("eighteen"); break;
+			case 19: printf ("nineteen"); break;
+		}			
+	}else{
+		printf ("the number ");
+		switch (userInput / 10){
+			case 2 : printf ("twenty"); break;
+			case 3 : printf ("thirty"); break;
+			case 4 : printf ("forty"); break;
+			case 5 : printf ("fifty"); break;
+			case 6 : printf ("sixty"); break;
+			case 7 : printf ("seventy"); break;
+			case 8 : printf ("eighty"); break;
+			case 9 : printf ("ninety"); break;
+		}
+
+		switch (userInput % 10){
+			case 0 : break;
+			case 1 : printf ("-one"); break;
+			case 2 : printf ("-two"); break;
+			case 3 : printf ("-three"); break;
+			case 4 : printf ("-four"); break;
+			case 5 : printf ("-five"); break;
+			case 6 : printf ("-six"); break;
+			case 7 : printf ("-seven"); break;
+			case 8 : printf ("-eight"); break;
+			case 9 : printf ("-nine"); break;
+		}
+	}
+	
+	printf (".\n");
+
+	return 0;
+}

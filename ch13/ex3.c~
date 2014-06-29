@@ -1,0 +1,34 @@
+/* KNKC chapter 13 exercise 4
+ * Sundeep Kolli 16-apr-2014
+ * Program: ex4.c
+ * Purpose: Modify the read_line function in the following ways:
+ *	a) Have it skip white space before storing input characters.
+ *  b) Have it stop reading at the first white space character. Hint: To 
+ *	   determine whether or not a character is a white space, call isspace 
+ *     function.
+ *  c) Have it stop reading at the first new-line character, then store the 
+ *     new-line character in the string.
+ *  d) Have it leave behind characters that it deosn't have room to store.
+*/
+
+#include <stdio.h>
+
+int main (void){
+	int i, j;
+	char s[30];	
+
+	/* i will be 12, if the length of s permits, s has the value abc34. Since 
+	 * scanf stops reading input at the first white space (except for white 
+	 * space at the beginning of the input and puts back the remaining input 
+	 * for next call, s will have the value abc34 and j will have 56.
+	*/	
+	printf("Enter input: ");
+	scanf("%d%s%d", &i, s, &j);
+	
+	printf("i: %d\n", i);
+	printf("s: %s\n", s);
+	printf("j: %d\n", j);
+	
+	return 0;
+}
+

@@ -1,0 +1,28 @@
+/* KNKC chapter 9 section 9.1
+ * Sundeep Kolli 08-feb-2014
+ * Program: average.c
+ * Purpose: Computes the pairwise averages of three numbers. 
+*/
+
+#include <stdio.h>
+
+double average(double a, double b);
+
+int main (void){
+	
+	double x, y, z;
+	
+	printf ("Enter three numbers: ");
+	scanf ("%lf%lf%lf", &x, &y, &z);
+	
+	printf ("Average of %g and %g: %g\n", x, y, average(x, y));
+	printf ("Average of %g and %g: %g\n", y, z, average(y, z));
+	printf ("Average of %g and %g: %g\n", x, z, average(x, z));
+	
+	return 0;
+}
+
+double average(double a, double b){
+	return (a + b) / 2;
+}
+

@@ -1,0 +1,21 @@
+/* KNKC chapter 13 Section 13.7
+ * Sundeep Kolli 15-apr-2014
+ * Program: planet.c
+ * Purpose: Checks planet names.
+*/
+
+#include <stdio.h>
+#include <string.h>
+
+#define NUM_PLANETS 9
+
+int main (int argc, char *argv[]){
+
+	char *planets[] = {"Mercury", "Venus", "Earth",
+					   "Mars", "Jupiter", "Saturn",
+					   "Uranus", "Neptune", "Pluto"};
+		
+	
+	return 0;
+}
+

@@ -1,0 +1,53 @@
+/* KNKC chapter 13 exercise 13
+ * Sundeep Kolli 17-apr-2014
+ * Program: ex13.c
+ * Purpose: Write the following function:
+ * 		void build_index_url(const char *domain, char *index_url);
+ * domain points to a string containing an internet domain, such as 
+ * "knking.com". The function should add "http://www." to the beginning of this 
+ * string and "/index.html" to the end of the string, storing the result in the 
+ * string pointed to by index_url. You may assume that index_url ponits to a 
+ * variable that is long enough to hold the resulting string. Keep the function 
+ * as simple as possible by using the strcat and strcpy functions.
+*/
+
+/*UNSAFE UNSAFE UNSAFE*/
+/*UNSAFE UNSAFE UNSAFE*/
+/*UNSAFE UNSAFE UNSAFE*/
+/*UNSAFE UNSAFE UNSAFE*/
+/*UNSAFE UNSAFE UNSAFE*/
+/*UNSAFE UNSAFE UNSAFE*/
+
+#include <stdio.h>
+#include <string.h>
+
+void get_extension(const char *file_name, char *extension);
+
+#define N 100
+
+int main(void){
+	char fname[N + 1], extn[N + 1] = "";
+	
+	printf("Enter the filename: ");
+	gets(fname);
+	
+	get_extension(fname, extn);
+	
+	printf("File name: %s has extension %s\n", fname, extn);
+				
+	return 0;
+}
+
+void get_extension(const char *file_name, char *extension){	
+
+/*	const char *f = file_name;*/
+	int i = strlen(file_name);
+	int j;
+	
+	for (j = 0; j < i; j++)
+		if (file_name[j] == '.')
+			break;
+	
+	strcpy(extension, (file_name + j + 1));
+}
+

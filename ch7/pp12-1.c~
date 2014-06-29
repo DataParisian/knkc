@@ -1,0 +1,93 @@
+/* KNKC chapter 7 programming project 12
+ * Sundeep Kolli 30-dec-2013
+ * Program: pp12.c
+ * Purpose: program to evaluate an expression with floating-point numbers
+ * and operators +, -, *, /. No operator has higher precedence than other.
+*/
+
+#include <stdio.h>
+
+int main(void){
+
+	typedef int bool;	
+/*	bool isParsing = 0, isPrevCharOperator = 0, inFloat = 0;*/
+/*	int i = 0, j, charCount;*/
+/*	long placeHolder;*/
+	
+	char c, currOperator;
+	bool inNumber = 0, inFloat = 0;
+	int i, decimalCount = 0;
+	float currMantissa = 0.0f, currExponent = 0.0f, tempExponent = 1.0f;
+	float prevOperand = 0.0f, currOperand = 0.0f, result = 0.0f;
+	
+	printf ("Enter an expression: ");
+
+	while ((c = getchar()) != '\n'){	
+		
+		
+			if (c == '.'){	
+				currOperand = currMantissa;
+				inNumber = 1;
+				inFloat = 1;
+				
+			}else if (c == '+' || c == '-' || c == '/' || c == '*'){
+/*				printf ("po: %.2f, res: %.2f\n", prevOperand, result);*/
+				prevOperand = result;
+				inNumber = 0;
+				inFloat = 0;
+				decimalCount = 0;
+				currMantissa = currExponent = 0.0f;
+				tempExponent = 1.0f;
+								
+				currOperator = c;
+				
+			}else{				
+				
+				inNumber = 1;
+				
+				if (inNumber && inFloat){
+					decimalCount++;
+					
+					for (i = 0; i < decimalCount; i++){
+						tempExponent /= 10.0f;	
+					}
+/*					printf ("tempExponent: %.2f\n", tempExponent);*/
+					currOperand += (tempExponent * ((float)(c - '0')));
+/*					printf ("currExponent: %.2f\n", currExponent);*/
+					tempExponent = 1.0f;
+				}else{
+				
+					currMantissa = (currMantissa * 10) + (float) (c - '0');
+/*					printf ("currMantissa: %.2f\n", currMantissa);*/
+					currOperand = currMantissa;
+				}				
+			}
+/*		printf ("currMantissa: %.2f\n", currMantissa);*/
+/*		printf ("currExponent: %.2f\n", currExponent);*/
+		
+
+		switch (currOperator){
+			case ('+'): result = prevOperand + currOperand; break;
+			case ('-'): result = prevOperand - currOperand; break;
+			case ('/'): result = prevOperand / currOperand; break;
+			case ('*'): result = prevOperand * currOperand; break;
+			default: result = prevOperand + currOperand; break;
+		}
+		
+	}
+	
+	printf ("Value of expression: %0.2f\n", result);		
+
+	return 0;
+}
+
+/*printf("po: %.2f, co: %.2f, coo: '+'\n",*/
+/*								prevOperand, currOperand);*/
+/*printf("po: %.2f, co: %.2f, coo: '+'\n",*/
+/*								prevOperand, currOperand); */
+					 	
+/*printf ("c: %c, prevOperand: %.2f, currOperand: %.2f\n", */
+/*							c, prevOperand, currOperand);				*/
+/*				printf ("currOperator: %c, currMantissa: %.2f, currExponent: %.2f\n", */
+/*							currOperator, currMantissa, currExponent);*/
+			
