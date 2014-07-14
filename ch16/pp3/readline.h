@@ -1,0 +1,20 @@
+#ifndef READLINE_H
+#define READLINE_H
+
+/* KNKC chapter 16 inventory.c
+ * Sundeep Kolli 13-july-2014
+ * Program: pp3.c
+ * Purpose: Modify the inventory.c program of section 16.3 by making inventory 
+ * and num_parts local to the main function.
+*/
+
+/***************************************************************************
+* read_line: Skips leading white-space characters, then reads the     	   *
+*            remainder of the input line and stores it in str. Truncates   *
+*            the line if its length exceeds n. Returns the number of       *
+*            characters stored.                                            *
+****************************************************************************/
+int read_line(char str[], int n);
+
+#endif
+
