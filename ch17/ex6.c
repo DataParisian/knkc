@@ -7,14 +7,25 @@
 
 struct node *delete_from_list(struct node *list, int n){
 	
-	struct node *cur, *prev;
+	struct node *cur;
 	
+	cur = list;	
+	/*
 	for (cur = list, prev = NULL; 
 		 cur != NULL && cur->value != n;
 		 prev = cur, cur = cur->next)
 	  ;
+	*/	
 	
-	if (cur == NULL)
+	if (cur->value == n)		              
+		 list = list->next;					  /* n is in the first node  */
+		
+	for (cur = list; 
+		 cur->next != NULL && cur->next->value != n;
+		 cur = cur->next)
+	  ;
+	
+	if (cur->next == NULL)
 		return list;                          /* n was not found         */
 	
 	if (prev == NULL)
