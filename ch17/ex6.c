@@ -9,30 +9,23 @@ struct node *delete_from_list(struct node *list, int n){
 	
 	struct node *cur;
 	
-	cur = list;	
-	/*
-	for (cur = list, prev = NULL; 
-		 cur != NULL && cur->value != n;
-		 prev = cur, cur = cur->next)
-	  ;
-	*/	
-	
-	if (cur->value == n)		              
-		 list = list->next;					  /* n is in the first node  */
-		
+	if (list->value == n){                    /* n is in the first node  */
+		free(cur);
+		return list->next;
+	}
+				
 	for (cur = list; 
-		 cur->next != NULL && cur->next->value != n;
+		 cur->next->next != NULL && cur->next->value != n;
 		 cur = cur->next)
 	  ;
 	
-	if (cur->next == NULL)
-		return list;                          /* n was not found         */
-	
-	if (prev == NULL)
-		list = list->next;					  /* n is in the first node  */
-	else
-		prev->next = cur->next;               /* n is in some other node */
-	free(cur);
-	return list;
+	if (cur->next->next == NULL){             /* n was not found         */
+		free(cur);
+		return list;                          
+	}else{       							  /* n is in some other node */
+		cur->next = cur->next->next;
+		free(cur);
+		return list;
+	}	
 }
 

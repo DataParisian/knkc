@@ -21,17 +21,17 @@ int main(void){
 	
 	p = malloc(sizeof(struct rectangle));
 	
-	p->upper_left.x = 10;
-	p->upper_left.y = 25;
-	
-	p->lower_right.x = 20;
-	p->lower_right.y = 15;
-	
 	if (p == NULL){
 		printf("Memory allocation error.\n");
 		return 0;
 	}
 	
+	p->upper_left.x = 10;
+	p->upper_left.y = 25;
+	
+	p->lower_right.x = 20;
+	p->lower_right.y = 15;
+		
 	printf("Upper left: (%2d, %2d)\n", p->upper_left.x, p->upper_left.y);
 	printf("Lower right: (%2d, %2d)\n", p->lower_right.x, p->lower_right.y);
 		
